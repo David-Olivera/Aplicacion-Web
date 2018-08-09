@@ -4,6 +4,8 @@
 
 use yii\helpers\Html;
 use yii\helpers\Url;
+	use yii\widgets\ActiveForm;
+
 
 ?>
 <div class="site-index">
@@ -15,7 +17,16 @@ use yii\helpers\Url;
    		<img src="/images/Monitoreo.png" title="Sistema de Administracion y Monitoreo de Querys">
    		<br/>
    		<br/>
-        <p><a class="btn btn-lg btn-success" href="<?= Url::toRoute('site/login') ?>">Inicio de Sesion</a></p>
-    </div>
+   		<?php $mens = ActiveForm::begin([
+		"method" => "post",
+		"action" => Url::toRoute('site/login'),
+		'enableClientValidation' => true,
+		]);
+		?>
+				
+			<?= Html::submitButton("Ingresar al Sistema",["class" => "btn btn-success"])?>
+
+		<?php $mens->end() ?>
+				    </div>
 
 </div>

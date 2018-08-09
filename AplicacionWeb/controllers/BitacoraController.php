@@ -11,7 +11,6 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\queryConec;
 use app\models\comentariosConecs;
-use app\models\FormSearch;
 use app\models\FormSearchfecha;
 use app\models\UsersConec;
 use yii\data\Pagination;
@@ -28,7 +27,6 @@ class BitacoraController extends Controller
 ///////////FUNCION DE LA TABLA DE COONTIENE LOS QUERYS ///////////
 	public function actionTprocess()
 	{
-			$form = new FormSearch;
       $formf = new FormSearchfecha;
 		$search = null;
     $date = null;
@@ -40,7 +38,7 @@ class BitacoraController extends Controller
 		      {
 	        $date = Html::encode($formf->date);
 	        $table = queryConec::find()
-	              -> where(["=","FechaQ",$date]); 
+	              -> where(["like","FechaQ","%".$date."%"]); 
 	        $table->orderBy([
 	    'query.FechaQ' => SORT_DESC,
 	      ]);
@@ -94,7 +92,7 @@ class BitacoraController extends Controller
 				->all();
 		}
 
-		 return $this->render("tprocess",["model" => $model,"form"=>$form,"formf"=>$formf,"date"=>$date,"search" => $search, "pages" => $pages, "msg" => $msg]);
+		 return $this->render("tprocess",["model" => $model,"formf"=>$formf,"date"=>$date,"search" => $search, "pages" => $pages, "msg" => $msg]);
 	}
 
 

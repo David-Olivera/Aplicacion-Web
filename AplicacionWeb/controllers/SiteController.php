@@ -134,10 +134,12 @@ public function behaviors()
      */
    public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-        
+      if (isset($_SESSION['user_id'])) 
+      {
+          return $this->redirect(['bitacora/tprocess']);
+      }
+      else
+      {
             $model = new LoginForm();
             $session = Yii::$app->session;
             $session->close();
@@ -157,8 +159,9 @@ public function behaviors()
                 'model' => $model,
             ]);
        }
-
+      }
     }
+       
     /**
      * Logs out the current user.
      *

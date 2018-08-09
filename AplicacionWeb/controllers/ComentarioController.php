@@ -11,7 +11,6 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\queryConec;
 use app\models\comentariosConecs;
-use app\models\FormSearch;
 use yii\data\Pagination;
 use yii\helpers\Html;
 use app\models\User;
