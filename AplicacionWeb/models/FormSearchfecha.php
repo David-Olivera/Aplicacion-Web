@@ -1,9 +1,9 @@
 <?php
 	namespace app\models;
 	use Yii;
-	use yii\base\model;
+	use yii\base\Model;
 	
-	class FormSearchfecha extends model
+	class FormSearchfecha extends Model
 	{
 		public $date;
 		
